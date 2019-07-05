@@ -1,6 +1,6 @@
         <div class="row">
                 <div class="col-md-6">
-                    <app-shopping-list-edit></app-shopping-list-edit>
+                    <app-shopping-list-edit (ingrediantAdded) = "onIngredientAdded($event)"></app-shopping-list-edit>
                     <hr>
                     <ul class="list-group">
                             <a *ngFor ="let ingrediant of ingrediants" class="list-group-item ">{{ingrediant.name}} ({{ingrediant.amount}})</a>
