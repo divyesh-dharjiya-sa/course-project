@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Recipe} from '../recipe.model';
+import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,27 +9,17 @@ import {Recipe} from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
- @Output() recipeWasSelected = new EventEmitter<Recipe>();
-  
-  recipes: Recipe[] = [
-    new Recipe(
-      'Dal Fry' ,
-      'I don’t like the regular pressure cooker with turmeric and salt only yellow dal. I want mine to have bold flavors, ' ,
-      'https://myfoodstory.com/wp-content/uploads/2016/03/dhaba-style-dal-fry-recipe.1024x1024-2.jpg'
-    ),
-    new Recipe(
-      'Baingan Bharta',
-      'I’m a massive baingan bharta snob because there is nothing appetising about pulpy eggplant or baingan. ',
-      'https://myfoodstory.com/wp-content/uploads/2017/11/Easy-Baingan-Bharta-Smoky-eggplant-stir-fry-1.jpg')
-  ];
-
-  constructor() { }
+  recipes: Recipe[];
+  constructor(private recipeService: RecipeService ,
+              private route: ActivatedRoute,
+              private router: Router
+              ) { }
 
   ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
   }
 
-  onRecipeSelected(recipe: Recipe){
-    this.recipeWasSelected.emit(recipe);
+  onNewRecipe(){
+        this.router.navigate(['new'], {relativeTo: this.route});
   }
-
 }

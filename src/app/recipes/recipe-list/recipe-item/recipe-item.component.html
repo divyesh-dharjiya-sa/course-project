@@ -1,8 +1,10 @@
-    
-    <div class="card" style="width: 18em; display: inline-block" (click)="onSelected()">
-        <img class="card-img-top" [src]="recipe.imagePath" alt="Card image cap" height="300px" width="450px">
-        <div class="card-body">
-          <h5 class="card-title">{{recipe.name}}</h5>
-          <p class="card-text">{{recipe.description}}</p>
-        </div>
+<a style="cursor: pointer ; color: black" [routerLink] = "[index]">
+  <div class="card" style="width: 18em; display: inline-block" >
+    <img class="card-img-top" [src]="recipe.imagePath" alt="Card image cap" height="300px" width="450px">
+    <div class="card-body">
+      <h5 class="card-title">{{recipe.name}}</h5>
+      <p class="card-text">{{recipe.description}}</p>
     </div>
+</div>
+</a>
+    
