@@ -1,6 +1,7 @@
 <div class="col-md-4">
         <button (click) = "onNewRecipe()" style="margin-top: 50px;" class="btn btn-success">Add New Recipe</button> <hr>
-        </div>
+</div>
+
 <app-recipe-item 
         *ngFor="let recipeEl of recipes ; let i = index" 
         [recipe] = "recipeEl" 
